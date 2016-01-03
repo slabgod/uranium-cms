@@ -31,7 +31,7 @@ A larger text block (must be a div)
 <div id="e2" class="{{ editable }} {{ large_editor }}">{{ data['e2']|default('Change me') }}</div>
 
 An image
-<img class="{{ editable_image }}" id="img1" src="{{ data['img1'] }}" alt="" />
+<img class="{{ editable_image }}" id="img1" src="{{ data['img1']|default('bg.jpg') }}" alt="" />
 ```
 For small text blocks set the content to ```{{ data['elementId']|default('Change me') }}``` and set the id of the element to ```id="elementId"```. Then add the class ```{{ editable }}``` and the property ```{{ content_editable }}```.
 
