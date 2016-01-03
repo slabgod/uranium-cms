@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Uranium CMS Demo Template</title>
+        {{ editor_head }}
+    </head>
+<body>
+    <h1>Uranium CMS Demo Template - Click to edit</h1>
+<p>A small block of text:</p><p id="e1" class="{{ editable }}" {{ content_editable }}>{{ data['e1']|default('Change me') }}</p>
+<p>A large block of text:</p><div id="e2" class="{{ editable }} {{ large_editor }}">{{ data['e2']|default('Change me') }}</div>
+<p>An image:</p><img style="width: 15%;" id="img1"  class="{{ editable_image }}" src="{{ data['img1']|default('bg.jpg') }}" alt="" />
+{{ editor_scripts }}
+</body>
+</html>
