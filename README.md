@@ -39,13 +39,13 @@ For large text blocks (these bring up a fancy editor when clicked on) use the sa
 
 For images, just add the class ```{{ editable_image }}``` and set the ```src``` property to ```{{ data['elementId']|default('bg.jpg') }}``` and then set the id to ```id="elementId"```.
 
-Any css that you would like to include would also need the ```{{ path }}``` tag at the beginning like so:
+Any css or js that you would like to include would also need the ```{{ path }}``` tag at the beginning like so:
 ```html
 <link rel="stylesheet" href="{{ path }}templates/striped/assets/css/main.css" />
 ```
 So that it can be accessed both from the editor and the compiled html
 
-A demo template is in the templates folder under the name example.html, enter the file name into the editor to bring it up. Click on any of the elements, and you will be able to edit them.
+A demo template is in the templates folder under the name index.html, enter the file name into the editor to bring it up. Click on any of the elements, and you will be able to edit them.
 
 # To Do:
 * **Add ability to change links, both text and href**
