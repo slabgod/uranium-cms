@@ -37,7 +37,7 @@
         <title>Create User</title>
     </head>
 <body> 
-<h1>Login</h1>
+<h1>Register</h1>
 <form action="reg.php" method="post">
   <label for="username">Username:</label>
   <input id="username" name="username" type="text">
