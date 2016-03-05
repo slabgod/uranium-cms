@@ -76,7 +76,7 @@ $editor_head = '<!--editor head-->
 $editor_scripts = '<!--editor-->
 <!-- editor buttons -->
 <section class="editor-buttons">
-<input type="text" placeholder="File Name" id="file"> <button onclick="window.location.href = \'index.php?file=\' + document.getElementById(\'file\').value + \'&editable\';" style="cursor:pointer">Change file</button>
+<input type="text" placeholder="File Name" id="file" onkeydown="if (event.keyCode == 13) { document.getElementById(\'edits\').click(); }"> <button id="edits" onclick="window.location.href = \'index.php?file=\' + document.getElementById(\'file\').value + \'&editable\';" style="cursor:pointer">Change file</button>
     <div style="cursor:pointer" onclick="save();" class="editor-button raised blue">
       <div style="text-align: center;" fit>SAVE</div>
     </div>
@@ -265,7 +265,7 @@ $(\'.large-text\').featherlight(\'#lightbox-editor\', {
             theme: \'snow\',
         });
         current = $.featherlight.current();
-    }
+    }, closeOnClick: false
 });
 </script>
 <!-- image editor -->
@@ -306,7 +306,7 @@ if (isset($_GET['msg'])) {
 }
 echo 'You are logged in as: '.$_SESSION['user'].'<br />';
 ?>
-<input id="file" type="text" placeholder="File Name"> <button onclick="window.location.href = 'index.php?file=' + document.getElementById('file').value + '&editable';">Edit file</button><br /><a href="logout.php">Log Out</a> <a href="reg.php">Add a User</a>
+<input id="file" type="text" placeholder="File Name" onkeydown="if (event.keyCode == 13) { document.getElementById('edits').click(); }"> <button id="edits" onclick="window.location.href = 'index.php?file=' + document.getElementById('file').value + '&editable';">Edit file</button><br /><a href="logout.php">Log Out</a> <a href="reg.php">Add a User</a>
 <?php
 }
 ?>
