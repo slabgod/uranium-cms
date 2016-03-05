@@ -304,7 +304,11 @@ echo 'Succesfully Published @ '.$_GET['file'];
 if (isset($_GET['msg'])) {
   echo $_GET['msg'].'<br />';
 }
-echo 'You are logged in as: '.$_SESSION['user'].'<br />';
+echo '<b>You are logged in as:</b> '.$_SESSION['user'].'<br />';
+$afiles = scandir('templates');
+unset($afiles[0]);
+unset($afiles[1]);
+echo('<b>Available pages:</b> '.implode(', ', $afiles).'<br />');
 ?>
 <input id="file" type="text" placeholder="File Name" onkeydown="if (event.keyCode == 13) { document.getElementById('edits').click(); }"> <button id="edits" onclick="window.location.href = 'index.php?file=' + document.getElementById('file').value + '&editable';">Edit file</button><br /><a href="logout.php">Log Out</a> <a href="reg.php">Add a User</a>
 <?php
