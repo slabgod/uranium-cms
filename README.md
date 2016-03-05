@@ -7,16 +7,17 @@ Basic overview:
 
 # Usage
 
-A typical setup flow:
 * Clone into your web server directory
+```git clone https://github.com/nermolov/uranium-cms```
 * Create the database 'cms' in MySQL
-* Add DB configuration into conn.php
-* Place your template into the 'templates' directory
+```CREATE DATABASE cms;```
+* Add DB configuration into editor/conn.php (username, password, server) 
+* Place your template into the 'templates' directory (a default one is already available)
 * Go to /editor/
-* Add a user (link available)
-* Login and edit away!
+* Add a user (click the link for first time users)
+* Login and edit away! To edit the example template enter index.html into the textbox and hit Edit
 
-You can hit save to save your work, or you can hit publish to both save your work and publish the file to html in the root.
+You can hit save to save your work, or you can hit publish to both save your work and publish the file to html in the root (public).
 
 # Making a template
 
