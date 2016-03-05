@@ -42,7 +42,7 @@ For images, just add the class ```{{ editable_image }}``` and set the ```src``` 
 
 Any css or js that you would like to include would also need the ```{{ path }}``` tag at the beginning like so:
 ```html
-<link rel="stylesheet" href="{{ path }}templates/striped/assets/css/main.css" />
+<link rel="stylesheet" href="{{ path }}templates/main.css" />
 ```
 So that it can be accessed both from the editor and the compiled html
 
