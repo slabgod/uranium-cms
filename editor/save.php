@@ -1,4 +1,10 @@
 <?php
+session_start();
+//NOT logged in
+if(!isset($_SESSION['user'])) {
+    echo 'not logged in!';
+    exit();
+}
 if (isset($_GET['file']) && isset($_POST)) {
     $table = preg_replace("/[^A-Za-z0-9]/", '', $_GET['file']);
     if ($table == 'login') exit;

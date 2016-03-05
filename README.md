@@ -9,13 +9,14 @@ Basic overview:
 
 A typical setup flow:
 * Clone into your web server directory
-* Create the database cms in MySQL
-* Add DB configuration into conn.php and add the directory of your templates to conf.php (default is just the root of templates)
-* Put your template into your specified directory
+* Create the database 'cms' in MySQL
+* Add DB configuration into conn.php
+* Place your template into the 'templates' directory
 * Go to /editor/
-* Edit away!
+* Add a user (link available)
+* Login and edit away!
 
-You can hit save to update your DB, or you can hit publish to both update the DB and save the file to html in the root.
+You can hit save to save your work, or you can hit publish to both save your work and publish the file to html in the root.
 
 # Making a template
 
@@ -49,10 +50,9 @@ A demo template is in the templates folder under the name example.html, enter th
 
 # To Do:
 * **Add ability to change links, both text and href**
-* **Add login (working on it right now)**
 * **Add Twig using submodules instead of just including the code (in git)**
 * Fix errors that show when there is no data yet
-* Make the code not ugly/performance imporvements
+* Make the code not ugly/performance improvements
 * Consolidate css/js and make sure it doesn't conflict with page css
 
 

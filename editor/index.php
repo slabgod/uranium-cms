@@ -1,8 +1,38 @@
 <?php
+session_start();
+//if NOT LOGGED IN! mind the !
+if(!isset($_SESSION['user'])) {
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+<body>
+  <h1>Login</h1>
+<?php
+if (isset($_GET['msg'])) {
+  echo $_GET['msg'].'<br />';
+}
+?>
+<form action="login.php" method="post">
+  <label for="username">Username:</label>
+  <input id="username" name="username" type="text">
+  <label for="password">Password:</label>
+  <input id="password" name="password" type="password">
+  <input type="submit" value="Login">
+</form>
+<p>First time using the software? <a href="reg.php">Create a user</a></p>
+</body>
+</html>
+<?php
+exit();
+}
+
 if(isset($_GET['file']) && $_GET['file'] != '') {
 require_once 'lib/Twig/Autoloader.php';
 require 'conn.php';
-require 'conf.php';
+$template_path = 'templates';
 Twig_Autoloader::register();
 
 $loader = new Twig_Loader_Filesystem($template_path);
@@ -270,8 +300,13 @@ fclose($myfile);
 echo 'Succesfully Published @ '.$_GET['file'];
 }
 } else {
+//LOGGED IN!, probably should change this to an if
+if (isset($_GET['msg'])) {
+  echo $_GET['msg'].'<br />';
+}
+echo 'You are logged in as: '.$_SESSION['user'].'<br />';
 ?>
-<input id="file" type="text" placeholder="File Name"> <button onclick="window.location.href = 'index.php?file=' + document.getElementById('file').value + '&editable';">Edit file</button>
+<input id="file" type="text" placeholder="File Name"> <button onclick="window.location.href = 'index.php?file=' + document.getElementById('file').value + '&editable';">Edit file</button><br /><a href="logout.php">Log Out</a> <a href="reg.php">Add a User</a>
 <?php
 }
 ?>
