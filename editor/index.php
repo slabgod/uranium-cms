@@ -1,4 +1,12 @@
 <?php
+error_reporting(0);
+require 'conn.php';
+$res = $conn->Query("SHOW TABLES LIKE 'login'");
+if ($res->num_rows == 0) {
+  session_start();
+  session_destroy();
+  header('Location: '.'reg.php');
+}
 session_start();
 //if NOT LOGGED IN! mind the !
 if(!isset($_SESSION['user'])) {
@@ -22,7 +30,6 @@ if (isset($_GET['msg'])) {
   <input id="password" name="password" type="password">
   <input type="submit" value="Login">
 </form>
-<p>First time using the software? <a href="reg.php">Create a user</a></p>
 </body>
 </html>
 <?php
@@ -31,7 +38,6 @@ exit();
 
 if(isset($_GET['file']) && $_GET['file'] != '') {
 require_once 'lib/Twig/Autoloader.php';
-require 'conn.php';
 $template_path = 'templates';
 Twig_Autoloader::register();
 
@@ -300,17 +306,19 @@ fclose($myfile);
 echo 'Succesfully Published @ '.$_GET['file'];
 }
 } else {
-//LOGGED IN!, probably should change this to an if
 if (isset($_GET['msg'])) {
   echo $_GET['msg'].'<br />';
 }
-echo '<b>You are logged in as:</b> '.$_SESSION['user'].'<br />';
+echo '<b>You are logged in as:</b> '.$_SESSION['user'].'<br /><br />';
 $afiles = scandir('templates');
 unset($afiles[0]);
 unset($afiles[1]);
-echo('<b>Available pages:</b> '.implode(', ', $afiles).'<br />');
+echo '<b>Available pages:</b><br />';
+foreach ($afiles as &$value) {
+  echo '<a href="index.php?file='.$value.'&editable">'.$value.'</a><br />';
+}
 ?>
-<input id="file" type="text" placeholder="File Name" onkeydown="if (event.keyCode == 13) { document.getElementById('edits').click(); }"> <button id="edits" onclick="window.location.href = 'index.php?file=' + document.getElementById('file').value + '&editable';">Edit file</button><br /><a href="logout.php">Log Out</a> <a href="reg.php">Add a User</a>
+<br /><a href="logout.php">Log Out</a> <a href="reg.php">Add a User</a>
 <?php
 }
 ?>
